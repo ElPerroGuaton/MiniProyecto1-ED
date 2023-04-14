@@ -1,35 +1,32 @@
-#ifndef LINKEDLISTQUEUE_H
-#define LINKEDLISTQUEUE_H
-#include "QueueADT.h"
+#ifndef LINKEDLISTSTACK_H
+#define LINKEDLISTSTACK_H
+#include "StackADT.h"
 #include <iostream>
 
 #pragma once
 
-class LinkedListQueue: public QueueADT{
+class LinkedListStack: public StackADT{
 private:
 
     struct Nodo{
-
         int valor;
         Nodo* siguiente;
         Nodo(int val, Nodo* nodo){
-            
             this->valor = val;
             this->siguiente = nodo;
         }
 
     };
 
-    Nodo* head;
-    Nodo* tail;
+    Nodo* ultimo;
     int contador;
 
 public:
-    LinkedListQueue();
-    ~LinkedListQueue();
-    void enqueue(int data);
-    void dequeue();
-    int front();
+    LinkedListStack();
+    ~LinkedListStack();
+    void push(int data);
+    void pop();
+    int top();
     bool isEmpty();
     int size();
 };

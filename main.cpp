@@ -1,47 +1,48 @@
 #include <iostream>
-#include "CircularArrayQueue.h"
-#include "LinkedListQueue.h"
+#include "ArrayStack.h"
+#include "LinkedListStack.h"
 
 using namespace std;
 
 int main() {
-    // Crear ArrayQueue y agregar elementos
-    CircularArrayQueue queue1(1);
-    queue1.enqueue(10);
-    queue1.enqueue(20);
-    queue1.enqueue(30);
+    // Crear ArrayStack y agregar elementos
+    ArrayStack stack1(10);
+    stack1.push(10);
+    stack1.push(20);
+    stack1.push(30);
 
-    // Imprimir tamaño y tope de la cola
-    cout << "ArrayQueue:" << endl;
-    cout << "Size: " << queue1.size() << endl;
-    cout << "Front: " << queue1.front() << endl;
+    // Imprimir tamaño y tope de la pila
+    cout << "ArrayStack:" << endl;
+    cout << "Size: " << stack1.size() << endl;
+    cout << "Top: " << stack1.top() << endl;
 
-    // Sacar elementos de la cola
-    queue1.dequeue();
-    queue1.dequeue();
+    // Sacar elementos de la pila
+    stack1.pop();
+    stack1.pop();
 
-    // Imprimir tamaño y tope de la cola actualizada
-    cout << "Size: " << queue1.size() << endl;
-    cout << "Front: " << queue1.front() << endl;
+    // Imprimir tamaño y tope de la pila actualizada
+    cout << "Size: " << stack1.size() << endl;
+    cout << "Top: " << stack1.top() << endl;
 
-    // Crear LinkedListQueue y agregar elementos
-    LinkedListQueue queue2;
-    queue2.enqueue(100);
-    queue2.enqueue(200);
-    queue2.enqueue(300);
+    // Crear LinkedListStack y agregar elementos
+    LinkedListStack stack2;
+    stack2.push(100);
+    stack2.push(200);
+    stack2.push(300);
 
-    // Imprimir tamaño y tope de la cola
-    cout << "LinkedListQueue:" << endl;
-    cout << "Size: " << queue2.size() << endl;
-    cout << "Front: " << queue2.front() << endl;
+    // Imprimir tamaño y tope de la pila
+    cout << "LinkedListStack:" << endl;
+    cout << "Size: " << stack2.size() << endl;
+    cout << "Top: " << stack2.top() << endl;
 
-    // Sacar elementos de la cola
-    queue2.dequeue();
-    queue2.dequeue();
+    // Sacar elementos de la pila
+    stack2.pop();
+    stack2.pop();
+    stack2.pop();
 
-    // Imprimir tamaño y tope de la cola actualizada
-    cout << "Size: " << queue2.size() << endl;
-    cout << "Top: " << queue2.front() << endl;
+    // Imprimir tamaño y tope de la pila actualizada
+    cout << "Size: " << stack2.size() << endl;
+    cout << "Top: " << stack2.top() << endl;
 
     return 0;
 }
