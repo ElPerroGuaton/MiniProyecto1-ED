@@ -30,6 +30,11 @@ NodeArray* LinkedList::getHead(){
     return head;
 }
 
+NodeArray* LinkedList::getTail(){
+
+    return tail;
+}
+
 void LinkedList::insertNode(){
 
     NodeArray* swap = tail;
@@ -83,6 +88,15 @@ void LinkedList::insertNodeAt(int pos){
         cerr<<message<<endl;
         exit(EXIT_FAILURE);
     }
+}
+
+void LinkedList::insertNodeAfter(NodeArray* nodo){
+
+    NodeArray* primero = nodo;
+    NodeArray* nuevo = new NodeArray(b,primero->getSiguiente(),nullptr);
+    primero->setSiguiente(nuevo);
+
+    size++;
 }
 
 int LinkedList::getSize(){

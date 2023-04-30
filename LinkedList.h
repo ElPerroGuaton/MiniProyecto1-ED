@@ -19,8 +19,10 @@ public:
     LinkedList(int b);
     ~LinkedList();
     NodeArray* getHead();
+    NodeArray* getTail();
     void insertNode(); //Inserta un nuevo NodeArray al final de la lista.
     void insertNodeAt(int pos); //Inserta un nuevo NodeArray en una posición.
+    void insertNodeAfter(NodeArray* nodo);
     int getSize();
 
 };

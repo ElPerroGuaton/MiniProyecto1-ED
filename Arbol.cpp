@@ -92,6 +92,22 @@ Arbol::Arbol(LinkedList* hojas){
 
 }
 
+NodeTree* Arbol::getRoot(){
+
+    return root;
+}
+
+void Arbol::sumaRecursivaPadres(Node* nodo){
+
+    if(nodo->getParent()!=nullptr){
+
+        nodo->setSize(nodo->getSize()+1);
+        sumaRecursivaPadres(nodo->getParent());
+    }
+
+    else nodo->setSize(nodo->getSize()+1);
+}
+
 void DestruirPadres(Node* nodo){
 
     Node* padre;
@@ -109,7 +125,7 @@ void DestruirPadres(Node* nodo){
 
 Arbol::~Arbol(){
 
-    Node* actual=leaves->getHead();
+    NodeArray* actual=leaves->getHead();
     Node* padre;
 
     for(int i=0;i<leaves->getSize();i++){
@@ -119,6 +135,8 @@ Arbol::~Arbol(){
         if(padre!=nullptr){
             DestruirPadres(padre);
         }
+
+        actual=actual->getSiguiente();
     }
 
     delete this;
