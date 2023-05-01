@@ -7,7 +7,6 @@ NodeArray::NodeArray(int b, NodeArray* next,Node* padre):Node(b,padre){
 
     this->array = new int[b];
     this->siguiente = next;
-    Node(b,padre);
 }
 
 NodeArray::~NodeArray(){

@@ -6,8 +6,9 @@ using namespace std;
 LinkedList::LinkedList(int tam){
 
     this->b = tam;
-    this->tail = new NodeArray(b,nullptr,nullptr);
-    this->head = tail;
+    NodeArray* nuevo = new NodeArray(b,nullptr,nullptr);
+    this->tail = nuevo;
+    this->head = nuevo;
     this->size = 1;
 }
 
@@ -38,8 +39,10 @@ NodeArray* LinkedList::getTail(){
 void LinkedList::insertNode(){
 
     NodeArray* swap = tail;
-    swap->setSiguiente(new NodeArray(b,nullptr,nullptr));
-    tail = swap->getSiguiente();
+    NodeArray* final = new NodeArray(b,nullptr,nullptr);
+
+    swap->setSiguiente(final);
+    tail = final;
 
     size++; 
 }
@@ -92,9 +95,17 @@ void LinkedList::insertNodeAt(int pos){
 
 void LinkedList::insertNodeAfter(NodeArray* nodo){
 
-    NodeArray* primero = nodo;
-    NodeArray* nuevo = new NodeArray(b,primero->getSiguiente(),nullptr);
-    primero->setSiguiente(nuevo);
+    if(nodo->getSiguiente()==nullptr){
+        insertNode();
+    }
+
+    else{
+        NodeArray* primero = nodo;
+        NodeArray* segundo = primero->getSiguiente();
+        NodeArray* nuevo = new NodeArray(b,segundo,nullptr);
+
+        primero->setSiguiente(nuevo);
+    }
 
     size++;
 }

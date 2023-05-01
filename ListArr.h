@@ -7,11 +7,11 @@
 
 class ListArr{
 
-private:
+public:
 
     int b; // Tamaño del arreglo
     LinkedList* listaArreglos;
-    Arbol* arbolBinario;    
+    Arbol* arbolBinario;
     
 public:
 

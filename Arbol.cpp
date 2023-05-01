@@ -14,14 +14,16 @@ Arbol::Arbol(LinkedList* hojas){
 
 
     NodeArray* actual= leaves->getHead();
+    NodeArray* siguiente;
+
     for(int i=0;i<contador;i++){
 
         hijos.push_back(actual);
-        actual = actual->getSiguiente();
+        siguiente = actual->getSiguiente();
+        actual = siguiente;
     }
 
-
-    while(contador!=2){
+    while(contador!=2 && contador>2){
 
         int pos = 0;
         padres.clear();
@@ -108,38 +110,10 @@ void Arbol::sumaRecursivaPadres(Node* nodo){
     else nodo->setSize(nodo->getSize()+1);
 }
 
-void DestruirPadres(Node* nodo){
 
-    Node* padre;
 
-    if(nodo->getParent()!=nullptr){
+Arbol::~Arbol(){ //Agregar destructor
 
-        padre = nodo->getParent();
-        delete nodo;
-
-        DestruirPadres(padre);
-    }
-
-    else delete nodo;
-}
-
-Arbol::~Arbol(){
-
-    NodeArray* actual=leaves->getHead();
-    Node* padre;
-
-    for(int i=0;i<leaves->getSize();i++){
-
-        padre = actual->getParent();
-        
-        if(padre!=nullptr){
-            DestruirPadres(padre);
-        }
-
-        actual=actual->getSiguiente();
-    }
-
-    delete this;
 }
 
 

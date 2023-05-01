@@ -4,11 +4,10 @@
 using namespace std;
 
 
-NodeTree::NodeTree(int b, Node* der, Node* izq,Node* padre):Node(b,padre){
+NodeTree::NodeTree(int b, Node* izq, Node* der,Node* padre):Node(b,padre){
 
     this->hijoIzquierda = izq;
     this->hijoDerecha = der;
-    Node(b,padre);    
 }
 
 NodeTree::~NodeTree(){

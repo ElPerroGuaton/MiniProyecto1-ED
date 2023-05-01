@@ -13,7 +13,7 @@ private:
 
 public:
     
-    NodeTree(int b, Node* der, Node* izq,Node* padre);
+    NodeTree(int b, Node* izq, Node* der, Node* padre);
     ~NodeTree();
     Node* getHijoIzquierda();
     Node* getHijoDerecha();

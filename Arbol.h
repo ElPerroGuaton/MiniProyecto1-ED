@@ -18,8 +18,6 @@ public:
     Arbol(LinkedList* hojas);
     ~Arbol();
     void sumaRecursivaPadres(Node* nodo);
-    void DestroyPadres(Node* raiz);
-    void DestruirArbol(LinkedList* hojas);
     NodeTree* getRoot();
 
 };

@@ -15,17 +15,16 @@ int ListArr::size(){
     return arbolBinario->getRoot()->getSize();
 }
 
-void ListArr::insert_left(int v){
-
+void ListArr::insert_left(int v){ 
+    
     NodeArray* cabeza = listaArreglos->getHead();
 
     if(cabeza->getSize()==b){
 
         listaArreglos->insertNodeAt(2);
         cabeza->getSiguiente()->addElement(cabeza->getElement(b-1));
-
-        arbolBinario->~Arbol();
-        arbolBinario = new Arbol(listaArreglos);
+        
+        arbolBinario = new Arbol(listaArreglos);  
     }
 
     else{
@@ -33,37 +32,44 @@ void ListArr::insert_left(int v){
         arbolBinario->sumaRecursivaPadres(cabeza->getParent());
     }
 
-    for(int i=cabeza->getSize()-2;i>-1;i--){
+    if(cabeza->getSize()==1){
 
-        cabeza->addElementAt(cabeza->getElement(i),i+1);
+        cabeza->addElement(cabeza->getElement(0));
+    }
+
+    else if(cabeza->getSize()>1 && cabeza->getSize()!=cabeza->getTotal()){
+
+        for(int i=cabeza->getSize()-1;i>-1;i--){
+
+            cabeza->addElementAt(cabeza->getElement(i),i+1);
+        }
+    }
+
+    else if(cabeza->getSize()==cabeza->getTotal()){
+
+        for(int i=cabeza->getSize()-2;i>-1;i--){
+
+            cabeza->addElementAt(cabeza->getElement(i),i+1);
+        }
     }
 
     cabeza->addElementAt(v,0);
-
-    
 } 
 
-void ListArr::insert_right(int v){
+void ListArr::insert_right(int v){ 
 
-    NodeArray* ultimo = listaArreglos->getTail();
-
-    if(ultimo->getSize()==b){
+    if(listaArreglos->getTail()->getSize()==b){
 
         listaArreglos->insertNode();
-        listaArreglos->getTail()->addElement(v);
 
-        arbolBinario->~Arbol();
-        arbolBinario = new Arbol(listaArreglos);
+        arbolBinario = new Arbol(listaArreglos);  
     }
-
-    else{
-
-        ultimo->addElement(v);
-        arbolBinario->sumaRecursivaPadres(ultimo->getParent());
-    }
+    
+    listaArreglos->getTail()->addElement(v);
+    arbolBinario->sumaRecursivaPadres(listaArreglos->getTail()->getParent());
 }
 
-void ListArr::insert(int v, int i){
+void ListArr::insert(int v, int i){ //Revisar despues de arreglar arbol
 
     try{
         if(i<0 || i>arbolBinario->getRoot()->getSize())
@@ -121,7 +127,7 @@ void ListArr::insert(int v, int i){
                     arbolBinario->sumaRecursivaPadres(nodoIndice->getParent());
                 }
 
-                for(int i=nodoIndice->getSize()-2;i>pos;i--){
+                for(int i=nodoIndice->getSize()-2;i>pos-1;i--){
 
                     nodoIndice->addElementAt(nodoIndice->getElement(i),i+1);
                 }
