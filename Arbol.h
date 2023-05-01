@@ -17,6 +17,7 @@ public:
 
     Arbol(LinkedList* hojas);
     ~Arbol();
+    void destructorRecursivo(Node* nodo);
     void sumaRecursivaPadres(Node* nodo);
     NodeTree* getRoot();
 

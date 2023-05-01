@@ -12,7 +12,6 @@ NodeTree::NodeTree(int b, Node* izq, Node* der,Node* padre):Node(b,padre){
 
 NodeTree::~NodeTree(){
 
-    delete this;   
 }
 
 Node* NodeTree::getHijoIzquierda(){

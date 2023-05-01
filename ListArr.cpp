@@ -21,10 +21,10 @@ void ListArr::insert_left(int v){
 
     if(cabeza->getSize()==b){
 
+        arbolBinario->~Arbol();
         listaArreglos->insertNodeAt(2);
         cabeza->getSiguiente()->addElement(cabeza->getElement(b-1));
-        
-        arbolBinario = new Arbol(listaArreglos);  
+        arbolBinario = new Arbol(listaArreglos);
     }
 
     else{
@@ -60,8 +60,8 @@ void ListArr::insert_right(int v){
 
     if(listaArreglos->getTail()->getSize()==b){
 
+        arbolBinario->~Arbol();
         listaArreglos->insertNode();
-
         arbolBinario = new Arbol(listaArreglos);  
     }
     
@@ -69,7 +69,7 @@ void ListArr::insert_right(int v){
     arbolBinario->sumaRecursivaPadres(listaArreglos->getTail()->getParent());
 }
 
-void ListArr::insert(int v, int i){ //Revisar despues de arreglar arbol
+void ListArr::insert(int v, int i){ 
 
     try{
         if(i<0 || i>arbolBinario->getRoot()->getSize())
@@ -98,7 +98,7 @@ void ListArr::insert(int v, int i){ //Revisar despues de arreglar arbol
 
                     cast = static_cast<NodeTree*>(actual);
 
-                    if(pos>cast->getHijoIzquierda()->getSize()){
+                    if(pos>=cast->getHijoIzquierda()->getSize()){
 
                         actual = cast->getHijoDerecha();
                         pos = pos - cast->getHijoIzquierda()->getSize();
@@ -115,10 +115,9 @@ void ListArr::insert(int v, int i){ //Revisar despues de arreglar arbol
 
                 if(nodoIndice->getSize()==b){
 
+                    arbolBinario->~Arbol();
                     listaArreglos->insertNodeAfter(nodoIndice);
                     nodoIndice->getSiguiente()->addElement(nodoIndice->getElement(b-1));
-
-                    arbolBinario->~Arbol();
                     arbolBinario = new Arbol(listaArreglos);
                 }
 

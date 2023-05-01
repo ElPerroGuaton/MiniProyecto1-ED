@@ -12,7 +12,6 @@ Node::Node(int b, Node* padre){
 
 Node::~Node(){
 
-    delete this;
 }
 
 Node* Node::getParent(){

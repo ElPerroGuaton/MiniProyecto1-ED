@@ -12,8 +12,6 @@ NodeArray::NodeArray(int b, NodeArray* next,Node* padre):Node(b,padre){
 NodeArray::~NodeArray(){
 
     delete array;
-    delete this;
-
 }
 
 int NodeArray::getElement(int pos){

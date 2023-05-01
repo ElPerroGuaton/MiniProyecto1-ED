@@ -110,11 +110,42 @@ void Arbol::sumaRecursivaPadres(Node* nodo){
     else nodo->setSize(nodo->getSize()+1);
 }
 
+void Arbol::destructorRecursivo(Node* nodo){
 
+    if(nodo!=nullptr){
 
-Arbol::~Arbol(){ //Agregar destructor
-
+        NodeTree* nodoBorrar = static_cast<NodeTree*>(nodo);
+    
+        destructorRecursivo(nodoBorrar->getHijoIzquierda());
+        destructorRecursivo(nodoBorrar->getHijoDerecha());
+        
+        delete nodo;
+    }
 }
 
+Arbol::~Arbol(){ 
+
+    NodeArray* actual = leaves->getHead();
+    NodeArray* siguiente;
+    NodeTree* padre;
+
+    for(int i=1;i<leaves->getSize()+1;i++){
+
+        siguiente = actual->getSiguiente();
+
+        if(i%2!=0){
+
+            padre = static_cast<NodeTree*>(actual->getParent());
+
+            padre->setHijoIzquierda(nullptr);
+            padre->setHijoDerecha(nullptr);
+            actual->setParent(nullptr);
+        }
+
+        actual = siguiente;
+    }
+
+    destructorRecursivo(root);
+}
 
 
